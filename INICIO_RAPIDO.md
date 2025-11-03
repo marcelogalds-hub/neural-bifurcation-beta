@@ -133,7 +133,7 @@ pip install tensorflow
 
 ### Outros Problemas
 
-📧 Me manda mensagem: [seu-email]  
+📧 Me manda mensagem: [marcelo.galdino@outlook.com.br]  
 Ou tenta no Colab (ambiente garantido)
 
 ---
