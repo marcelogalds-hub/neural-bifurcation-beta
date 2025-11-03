@@ -13,7 +13,7 @@
 ### Opção 2: Instalação Local
 ```bash
 # Clone este repositório
-git clone https://github.com/[seu-usuario]/neural-bifurcation-beta.git
+git clone https://github.com/marcelogalds-hub/neural-bifurcation-beta.git
 cd neural-bifurcation-beta
 
 # Instale as dependências
