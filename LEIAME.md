@@ -215,7 +215,7 @@ Mostra como criar seu próprio objetivo.
 Framework baseado em teoria matemática sobre transição de regimes 
 em sistemas dinâmicos não-autônomos.
 
-📄 [Leia o paper](paper/teorema_ajustado.pdf)
+📄 [Leia o paper](paper/teorema_v2.pdf)
 
 ---
 
