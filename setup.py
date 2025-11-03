@@ -40,7 +40,7 @@ setup(
     ],
     keywords="deep-learning machine-learning early-stopping multi-objective neural-networks",
     project_urls={
-        "Bug Reports": "https://github.com/seu-usuario/neural-bifurcation/issues",  # ← TROCAR
-        "Source": "https://github.com/seu-usuario/neural-bifurcation",  # ← TROCAR
+        "Bug Reports": "https://github.com/marcelogalds-hub/neural-bifurcation/issues",
+        "Source": "https://github.com/marcelogalds-hub/neural-bifurcation",
     },
 )
