@@ -294,7 +294,7 @@ Se não informar, framework ainda funciona, só não mostra economia.
 
 Framework é plug-and-play. Use sem entender a teoria.
 
-Mas se tiver curiosidade: [paper/teorema_ajustado.pdf](paper/teorema_ajustado.pdf)
+Mas se tiver curiosidade: [paper/Teorema_v2.pdf](paper/Teorema_v2.pdf)
 
 ### O que é "Teorema da Lei das Leis"?
 
