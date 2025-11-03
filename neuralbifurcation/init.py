@@ -59,7 +59,7 @@ def _show_welcome():
         print("   - Dúvidas: DUVIDAS_FREQUENTES.md")
         print()
         print("🐛 Bugs? Sugestões?")
-        print("   Email: seu-email@exemplo.com")  # ← TROCAR
+        print("   Email: marcelo.galdino@outlook.com.br")
         print("="*60)
         print()
         
