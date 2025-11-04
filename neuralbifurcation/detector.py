@@ -553,7 +553,7 @@ class MultiObjectiveRegimeDetector(keras.callbacks.Callback):
         print()
         
         # Comparar todos os objetivos possíveis
-        comparison = ObjectiveComparator.compare_all(self.history)
+        # comparison = ObjectiveComparator.compare_all(self.history)
         
         # Tabela comparativa
         print(f"{'Objetivo':<20} | {'Melhor Epoch':<12} | {'Val Acc':<8} | {'At':<6} | {'ROI':<8}")
