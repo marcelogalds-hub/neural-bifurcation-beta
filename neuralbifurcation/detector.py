@@ -47,7 +47,7 @@ from tensorflow import keras
 from typing import Dict, List, Optional, Any, Tuple
 import warnings
 
-from objective_configs import ObjectiveLibrary, ObjectiveComparator
+from objectives import ObjectiveLibrary, ObjectiveComparator
 from state_classifier import StateClassifier, LearningState
 
 warnings.filterwarnings('ignore')
