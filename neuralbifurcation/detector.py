@@ -559,16 +559,16 @@ class MultiObjectiveRegimeDetector(keras.callbacks.Callback):
         print(f"{'Objetivo':<20} | {'Melhor Epoch':<12} | {'Val Acc':<8} | {'At':<6} | {'ROI':<8}")
         print("-" * 80)
         
-        for obj_name, result in comparison.items():
-            metrics = result['metrics_at_best']
-            print(f"{obj_name:<20} | "
-                  f"{result['best_epoch']+1:<12} | "
-                  f"{metrics['val_acc']:.3f}    | "
-                  f"{metrics['At']:.2f} | "
-                  f"${metrics['roi']:>6.2f}")
+        # for obj_name, result in comparison.items():
+        #     metrics = result['metrics_at_best']
+        #     print(f"{obj_name:<20} | "
+        #           f"{result['best_epoch']+1:<12} | "
+        #           f"{metrics['val_acc']:.3f}    | "
+        #           f"{metrics['At']:.2f} | "
+        #           f"${metrics['roi']:>6.2f}")
         
-        print("="*80)
-        print()
+        # print("="*80)
+        # print()
         
         # Recomendação para o objetivo selecionado
         selected = comparison[self.objective]
