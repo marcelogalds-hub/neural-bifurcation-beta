@@ -193,7 +193,7 @@ class MultiObjectiveRegimeDetector(keras.callbacks.Callback):
         
         # Carregar configuração do objetivo selecionado
         # Isso valida automaticamente se o objetivo existe
-        self.config = ObjectiveLibrary.get_config(objective)
+        self.config = get_objective_config(objective)
         
         # Inicializar classificador de estados com janela de 5 épocas
         self.classifier = StateClassifier(window_size=5)
