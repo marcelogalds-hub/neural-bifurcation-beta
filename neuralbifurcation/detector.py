@@ -47,7 +47,7 @@ from tensorflow import keras
 from typing import Dict, List, Optional, Any, Tuple
 import warnings
 
-from .objectives import get_objective_config, ObjectiveConfig
+from .objectives import ObjectiveLibrary, ObjectiveConfig
 from .states import StateClassifier, SystemState
 
 warnings.filterwarnings('ignore')
@@ -193,7 +193,7 @@ class MultiObjectiveRegimeDetector(keras.callbacks.Callback):
         
         # Carregar configuração do objetivo selecionado
         # Isso valida automaticamente se o objetivo existe
-        self.config = get_objective_config(objective)
+        self.config = ObjectiveLibrary.get_config(objective)
         
         # Inicializar classificador de estados com janela de 5 épocas
         self.classifier = StateClassifier(window_size=5)
