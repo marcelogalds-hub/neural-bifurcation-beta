@@ -388,7 +388,7 @@ class MultiObjectiveRegimeDetector(keras.callbacks.Callback):
             self.history['state'].append(state.value)
         else:
             # Nas primeiras 5 épocas, sempre está inicializando
-            state = LearningState.INITIALIZATION
+            state = SystemState.INITIALIZATION
             self.history['state'].append(state.value)
         
         # ====================================
