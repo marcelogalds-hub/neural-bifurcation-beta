@@ -326,3 +326,24 @@ class ObjectiveComparator:
                 best_epoch = epoch
         
         return best_epoch, best_score
+
+def get_objective_config(objective_name):
+    """
+    Retorna configuração do objetivo.
+    
+    Args:
+        objective_name: Nome do objetivo ('accuracy', 'robustness', 'cost', 'balanced')
+        
+    Returns:
+        ObjectiveConfig
+        
+    Raises:
+        ValueError: Se objetivo não existir
+    """
+    if objective_name not in OBJECTIVE_CONFIGS:
+        raise ValueError(
+            f"Objetivo '{objective_name}' inválido. "
+            f"Opções: {list(OBJECTIVE_CONFIGS.keys())}"
+        )
+    
+    return OBJECTIVE_CONFIGS[objective_name]
