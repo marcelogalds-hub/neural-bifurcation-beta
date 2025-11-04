@@ -8,7 +8,7 @@ Classificador de estados de aprendizado
 import numpy as np
 from enum import Enum
 
-class LearningState(Enum):
+class SystemState(Enum):
     """Estados possíveis do treinamento"""
     INITIALIZATION = "inicializacao"
     LEARNING_FAST = "aprendizado_rapido"
@@ -28,7 +28,7 @@ class StateClassifier:
     def __init__(self, window_size: int = 5):
         self.window_size = window_size
     
-    def classify(self, history: dict, epoch: int) -> LearningState:
+    def classify(self, history: dict, epoch: int) -> SystemState:
         """
         Classifica estado no epoch atual
         
@@ -37,7 +37,7 @@ class StateClassifier:
             epoch: Epoch atual (0-indexed)
         
         Returns:
-            LearningState
+            SystemState
         """
         # Pegar janela recente
         start = max(0, epoch - self.window_size + 1)
@@ -78,56 +78,56 @@ class StateClassifier:
         
         # 1. Inicialização
         if epoch < 4:
-            return LearningState.INITIALIZATION
+            return SystemState.INITIALIZATION
         
         # 2. Colapso iminente
         if At_mean < 0.5 and gap > 0.5 and val_trend < -0.02:
-            return LearningState.COLLAPSE_IMMINENT
+            return SystemState.COLLAPSE_IMMINENT
         
         # 3. Overfitting severo
         if gap > 0.35 and val_trend < 0 and At_mean < 0.70:
-            return LearningState.OVERFITTING_SEVERE
+            return SystemState.OVERFITTING_SEVERE
         
         # 4. Instabilidade
         if At_cv > 0.15:  # Variação > 15%
-            return LearningState.INSTABILITY
+            return SystemState.INSTABILITY
         
         # 5. Underfitting
         if train_mean < 0.6 and val_mean < 0.6 and At_mean > 1.15:
-            return LearningState.UNDERFITTING
+            return SystemState.UNDERFITTING
         
         # 6. Overfitting inicial
         if gap > 0.20 and At_trend < -0.01 and At_mean < 0.85:
-            return LearningState.OVERFITTING_EARLY
+            return SystemState.OVERFITTING_EARLY
         
         # 7. Plateau
         if abs(improvement_rate) < 0.002 and epoch > 10:
-            return LearningState.PLATEAU
+            return SystemState.PLATEAU
         
         # 8. Aprendizado rápido
         if improvement_rate > 0.01 and 0.85 <= At_mean <= 1.15:
-            return LearningState.LEARNING_FAST
+            return SystemState.LEARNING_FAST
         
         # 9. Aprendizado saudável
         if 0.003 <= improvement_rate <= 0.01 and 0.85 <= At_mean <= 1.15:
-            return LearningState.LEARNING_HEALTHY
+            return SystemState.LEARNING_HEALTHY
         
         # 10. Saudável (padrão)
-        return LearningState.LEARNING_HEALTHY
+        return SystemState.LEARNING_HEALTHY
     
-    def get_state_info(self, state: LearningState) -> dict:
+    def get_state_info(self, state: SystemState) -> dict:
         """
         Retorna informações sobre um estado
         """
         info = {
-            LearningState.INITIALIZATION: {
+            SystemState.INITIALIZATION: {
                 'emoji': '🔧',
                 'severity': 'info',
                 'description': 'Calibrando baseline, aguarde',
                 'action': 'continue',
                 'urgency': 'none'
             },
-            LearningState.LEARNING_FAST: {
+            SystemState.LEARNING_FAST: {
                 'emoji': '🚀',
                 'severity': 'good',
                 'description': 'Progresso rápido, ROI alto',
@@ -135,14 +135,14 @@ class StateClassifier:
                 'urgency': 'none',
                 'note': 'Zona de maior eficiência!'
             },
-            LearningState.LEARNING_HEALTHY: {
+            SystemState.LEARNING_HEALTHY: {
                 'emoji': '✅',
                 'severity': 'good',
                 'description': 'Aprendizado saudável e estável',
                 'action': 'continue',
                 'urgency': 'none'
             },
-            LearningState.OVERFITTING_EARLY: {
+            SystemState.OVERFITTING_EARLY: {
                 'emoji': '⚠️',
                 'severity': 'warning',
                 'description': 'Overfitting detectado, agir preventivamente',
@@ -154,7 +154,7 @@ class StateClassifier:
                     'Adicionar data augmentation'
                 ]
             },
-            LearningState.OVERFITTING_SEVERE: {
+            SystemState.OVERFITTING_SEVERE: {
                 'emoji': '🔴',
                 'severity': 'critical',
                 'description': 'Overfitting severo, parar recomendado',
@@ -162,7 +162,7 @@ class StateClassifier:
                 'urgency': 'high',
                 'note': 'Continuar apenas prejudica o modelo'
             },
-            LearningState.PLATEAU: {
+            SystemState.PLATEAU: {
                 'emoji': '😴',
                 'severity': 'warning',
                 'description': 'Estagnação detectada, avaliar ROI',
@@ -173,7 +173,7 @@ class StateClassifier:
                     'OU parar se ROI baixo'
                 ]
             },
-            LearningState.UNDERFITTING: {
+            SystemState.UNDERFITTING: {
                 'emoji': '📉',
                 'severity': 'critical',
                 'description': 'Modelo muito simples, precisa mais capacidade',
@@ -185,7 +185,7 @@ class StateClassifier:
                     'Trocar arquitetura'
                 ]
             },
-            LearningState.INSTABILITY: {
+            SystemState.INSTABILITY: {
                 'emoji': '🌊',
                 'severity': 'warning',
                 'description': 'Treino instável, métricas oscilando',
@@ -197,7 +197,7 @@ class StateClassifier:
                     'Adicionar gradient clipping'
                 ]
             },
-            LearningState.COLLAPSE_IMMINENT: {
+            SystemState.COLLAPSE_IMMINENT: {
                 'emoji': '💀',
                 'severity': 'critical',
                 'description': 'COLAPSO IMINENTE - parar imediatamente',
